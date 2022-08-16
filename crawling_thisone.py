@@ -120,7 +120,7 @@ def youtube_crawling(keyword):
     for item in data['items']:
       comment = item['snippet']['topLevelComment']['snippet']['textOriginal']
       if keyword in comment:
-        comment_lst.append(str(comment))
+        comment_lst.append(comment.replace('\n', ''))
   
   youtube_df = pd.DataFrame({'출처':'youtube_comment', 'index':[ i+1 for i in range(len(comment_lst))], '내용': comment_lst})
   return youtube_df
